@@ -1,0 +1,28 @@
+type Usuario {
+  id: ID!
+  usuario: String
+  password: String
+  tipo: TipoUsuario
+}
+input UsuarioInput {
+  id: ID
+  usuario: String!
+  password: String!
+  tipo: TipoUsuario!
+}
+enum TipoUsuario {
+  VENDEDOR
+  ADMIN
+}
+
+type Query {
+  getUsuarios: [Usuario]
+  getUsuario(id: ID!): Usuario
+  totalUsuarios: String
+}
+
+type Mutation {
+  addUser(input: UsuarioInput): Usuario
+  modUser(input: UsuarioInput): Usuario
+  deleteUser(id: ID): String
+}
